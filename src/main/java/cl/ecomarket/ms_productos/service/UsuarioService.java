@@ -74,8 +74,8 @@ public class UsuarioService {
         if (usuario.getRoles() == null) {
             usuario.setRoles(new HashSet<>());
         }
-        // Por defecto, un nuevo usuario debería estar activo
-        if (usuario.isActivo() == false) { // Si no se especifica, ponerlo activo
+        
+        if (usuario.isActivo() == false) { 
              usuario.setActivo(true);
         }
         return usuarioRepository.save(usuario);
@@ -97,13 +97,7 @@ public class UsuarioService {
             usuario.setEmail(usuarioDetails.getEmail());
         }
 
-        // No se suele permitir cambiar el username fácilmente. Si se hace, se necesita validación.
-        // if (usuarioDetails.getUsername() != null && !usuario.getUsername().equals(usuarioDetails.getUsername())) {
-        // if (usuarioRepository.existsByUsername(usuarioDetails.getUsername())) {
-        // throw new IllegalArgumentException("El nuevo username ya está registrado: " + usuarioDetails.getUsername());
-        // }
-        // usuario.setUsername(usuarioDetails.getUsername());
-        // }
+
 
         if (usuarioDetails.isActivo() != false) { // Permitir actualizar el estado activo
             usuario.setActivo(usuarioDetails.isActivo());
@@ -119,7 +113,6 @@ public class UsuarioService {
         if (nuevaPassword == null || nuevaPassword.trim().isEmpty()) {
             throw new IllegalArgumentException("La nueva contraseña no puede estar vacía.");
         }
-        // Podrías añadir validaciones de longitud/complejidad de contraseña aquí
         usuario.setPassword(passwordEncoder.encode(nuevaPassword.trim()));
         return usuarioRepository.save(usuario);
     }
@@ -144,9 +137,7 @@ public class UsuarioService {
     public void deleteUsuario(Long id) {
         Usuario usuario = usuarioRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Usuario no encontrado con id: " + id));
-        // Antes de eliminar, podrías necesitar lógica adicional, como desasociar de otras entidades si hay restricciones.
-        // Por ejemplo, si un usuario tiene pedidos, ¿qué sucede? (Depende de tus reglas de negocio)
-        // Aquí, simplemente eliminamos.
+
         usuarioRepository.delete(usuario);
     }
 

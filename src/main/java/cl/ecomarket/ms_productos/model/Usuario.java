@@ -12,7 +12,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(name = "usuarios") // Nombre de la tabla
+@Table(name = "usuarios") 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -37,7 +37,7 @@ public class Usuario {
     private String email;
 
     @NotBlank
-    @Column(nullable = false) // Se almacenará hasheada
+    @Column(nullable = false) 
     private String password;
 
     @Column(nullable = false)

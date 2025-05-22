@@ -60,8 +60,7 @@ public class UsuarioController {
             if (nuevaPassword == null || nuevaPassword.trim().isEmpty()) {
                 return ResponseEntity.badRequest().body(Map.of("error", "La nuevaPassword es requerida."));
             }
-            // El servicio retorna el usuario actualizado, pero para cambio de contraseña,
-            // un mensaje de éxito suele ser suficiente. Si se quisiera retornar el usuario, se podría.
+            // El servicio retorna el usuario actualizado, pero para cambio de contraseña
             usuarioService.cambiarPassword(id, nuevaPassword);
             return ResponseEntity.ok(Map.of("mensaje", "Contraseña actualizada exitosamente para el usuario ID: " + id));
         } catch (EntityNotFoundException e) {
@@ -74,7 +73,7 @@ public class UsuarioController {
     @PatchMapping("/{id}/desactivar")
     public ResponseEntity<?> desactivarUsuario(@PathVariable Long id) {
         try {
-            Usuario usuarioDesactivado = usuarioService.desactivarUsuario(id); // Se usa aquí
+            Usuario usuarioDesactivado = usuarioService.desactivarUsuario(id); 
             return ResponseEntity.ok(usuarioDesactivado);
         } catch (EntityNotFoundException e) {
             return ResponseEntity.notFound().build();
@@ -97,7 +96,7 @@ public class UsuarioController {
             usuarioService.deleteUsuario(id);
             return ResponseEntity.noContent().build();
         } catch (EntityNotFoundException e) {
-            // Podrías retornar un mensaje si lo prefieres en lugar de solo 404
+            // mensaje en lugar de solo 404
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(Map.of("error", "Usuario no encontrado con id: " + id));
         }
     }

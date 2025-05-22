@@ -10,14 +10,14 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "producto") // Hibernate creará esta tabla
+@Table(name = "producto") 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class Producto {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id; // Cambiado de long a Long para que pueda ser null si es necesario y es más estándar en JPA
+    private Long id; 
 
     @NotBlank(message = "El código del producto no puede estar vacío.")
     @Size(min = 3, max = 50, message = "El código debe tener entre 3 y 50 caracteres.")
@@ -29,7 +29,7 @@ public class Producto {
     @Column(nullable = false)
     private String nombre;
 
-    @Column(columnDefinition = "TEXT") // Para descripciones más largas
+    @Column(columnDefinition = "TEXT") 
     private String descripcion;
 
     @Size(max = 100)
@@ -39,10 +39,10 @@ public class Producto {
     @NotNull(message = "El precio no puede ser nulo.")
     @Min(value = 0, message = "El precio no puede ser negativo.")
     @Column(nullable = false)
-    private Double precio; // Cambiado de double a Double
+    private Double precio; 
 
     @NotNull(message = "El stock no puede ser nulo.")
     @Min(value = 0, message = "El stock no puede ser negativo.")
     @Column(nullable = false)
-    private Integer stock; // Cambiado de int a Integer
+    private Integer stock; 
 }

@@ -10,7 +10,7 @@ import java.util.Optional;
 @Repository
 public interface ProductoRepository extends JpaRepository<Producto, Long> {
 
-    // Métodos de consulta personalizados (Spring Data JPA los implementará automáticamente)
+    // Métodos de consulta personalizados (Spring Data JPA se implementan automáticamente)
 
     /**
      * Encuentra un producto por su código único.

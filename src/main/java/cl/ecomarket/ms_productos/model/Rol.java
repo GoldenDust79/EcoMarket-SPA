@@ -24,7 +24,6 @@ public class Rol {
     @Column(nullable = false, unique = true, length = 50)
     private String nombre; // Ejemplo: "ADMINISTRADOR_SISTEMA", "GERENTE_TIENDA"
 
-    // Podrías tener una descripción
     // @Column
     // private String descripcion;
 
@@ -42,11 +41,11 @@ public class Rol {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Rol rol = (Rol) o;
-        return Objects.equals(id, rol.id); // Es crucial que sea por ID para roles persistidos
+        return Objects.equals(id, rol.id); 
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id); // Basado en ID
+        return Objects.hash(id); 
     }
 }

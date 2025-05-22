@@ -121,12 +121,6 @@ public class DataInitializer implements CommandLineRunner {
             return rolGuardado;
         }
         Rol rolExistente = rolOpt.get();
-        // Opcional: actualizar permisos si el rol ya existe y los permisos son diferentes
-        // if (permisos != null && !rolExistente.getPermisos().equals(permisos)) {
-        //     rolExistente.setPermisos(new HashSet<>(permisos));
-        //     rolRepository.save(rolExistente);
-        //     log.info("Permisos actualizados para el rol '{}'.", nombreRolUpper);
-        // }
         return rolExistente;
     }
 

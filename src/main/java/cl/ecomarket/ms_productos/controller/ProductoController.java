@@ -3,7 +3,7 @@ package cl.ecomarket.ms_productos.controller;
 import cl.ecomarket.ms_productos.model.Producto;
 import cl.ecomarket.ms_productos.service.ProductoService;
 import jakarta.persistence.EntityNotFoundException;
-import jakarta.validation.Valid; // Para activar las validaciones del modelo
+import jakarta.validation.Valid; 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -55,7 +55,6 @@ public class ProductoController {
         } catch (IllegalArgumentException e) {
             return ResponseEntity.badRequest().body(e.getMessage());
         }
-        // Aquí podrías manejar otras excepciones específicas si fuera necesario
     }
 
     @PutMapping("/{id}")
@@ -81,7 +80,6 @@ public class ProductoController {
     }
 
     // Endpoint para ajustar stock
-    // Se usa PATCH porque es una actualización parcial del recurso Producto
     @PatchMapping("/{codigoProducto}/stock")
     public ResponseEntity<?> ajustarStock(
             @PathVariable String codigoProducto,

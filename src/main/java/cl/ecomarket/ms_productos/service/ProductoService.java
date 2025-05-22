@@ -36,7 +36,7 @@ public class ProductoService {
         if (productoRepository.existsByCodigo(producto.getCodigo())) {
             throw new IllegalArgumentException("Ya existe un producto con el código: " + producto.getCodigo());
         }
-        // Aquí podrías añadir más validaciones o lógica de negocio antes de guardar
+       
         return productoRepository.save(producto);
     }
 
@@ -45,7 +45,7 @@ public class ProductoService {
         Producto producto = productoRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Producto no encontrado con id: " + id));
 
-        // Validar si el nuevo código ya existe en otro producto
+        
         if (!producto.getCodigo().equals(productoDetails.getCodigo()) &&
             productoRepository.existsByCodigo(productoDetails.getCodigo())) {
             throw new IllegalArgumentException("El nuevo código '" + productoDetails.getCodigo() + "' ya está en uso por otro producto.");
@@ -57,7 +57,7 @@ public class ProductoService {
         producto.setCategoria(productoDetails.getCategoria());
         producto.setPrecio(productoDetails.getPrecio());
         producto.setStock(productoDetails.getStock());
-        // Considerar no actualizar el ID aquí, ya que es la clave primaria
+        
 
         return productoRepository.save(producto);
     }
@@ -80,7 +80,7 @@ public class ProductoService {
         return productoRepository.findByCategoriaIgnoreCase(categoria);
     }
 
-    // Podrías añadir métodos para ajustar stock, etc.
+    
     @Transactional
     public Producto ajustarStock(String codigoProducto, int cantidad) {
         Producto producto = productoRepository.findByCodigo(codigoProducto)
