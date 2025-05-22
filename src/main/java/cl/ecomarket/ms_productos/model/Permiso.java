@@ -22,4 +22,6 @@ public class Permiso {
 
     // @Column
     // private String descripcion;
+
+    //esta clase sirve para administrar los permisos de los usuarios
 }
